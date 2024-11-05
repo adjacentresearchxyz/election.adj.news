@@ -93,6 +93,13 @@
             right: 20px; /* Aligns the button with the right of the iframe */
             z-index: 10000; /* Ensures the button is on top of the iframe */
             cursor: pointer; /* Changes cursor to pointer on hover */
+            background-color: #f0f0f0; /* Sets the background color of the button */
+            padding: 10px 20px; /* Adds padding to the button */
+            border: none; /* Removes border */
+            border-radius: 20px; /* Adds rounded corners */
+            font-size: 16px; /* Sets font size */
+            font-family: Arial, sans-serif; /* Sets font family */
+            color: #333; /* Sets text color */
         }
     </style>
 </head>
@@ -111,6 +118,25 @@
         <div class="tv-chart-container" id="tv_chart_container_9"></div>
     </div>
     <iframe src='https://iframe.chat/embed/index.html?chat=28949808' id='chattable' frameborder='none'></iframe>
+    <button id='collapse-button' onclick='toggleChatCollapse()'>Collapse</button>
 </body>
+
+<script>
+    function toggleChatCollapse() {
+        const chattable = document.getElementById('chattable');
+        const chartsContainer = document.querySelector('.charts-container');
+        if (chattable.classList.contains('collapsed')) {
+            chattable.classList.remove('collapsed');
+            document.body.style.gridTemplateColumns = '1fr 1fr 1fr 1fr';
+            chartsContainer.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            chartsContainer.style.gridTemplateRows = 'repeat(3, 1fr)';
+            document.getElementById('collapse-button').innerText = 'Collapse';
+        } else {
+            chattable.classList.add('collapsed');
+            document.body.style.gridTemplateColumns = '1fr 1fr 1fr';
+            document.getElementById('collapse-button').innerText = 'Toggle Chat';
+        }
+    }
+</script>
 
 </html>

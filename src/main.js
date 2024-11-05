@@ -21,7 +21,7 @@ const data = Datafeed;
 for (let i = 1; i <= 9; i++) {
 	window[`tvWidget_${i}`] = new TradingView.widget({
 		symbol: markets[i - 1].toLowerCase(),
-		interval: '60',
+		interval: '15',
 		fullscreen: false,
 		container: `tv_chart_container_${i}`,
 		datafeed: data,
