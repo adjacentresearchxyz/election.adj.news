@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Adjacent Trade</title>
+    <link rel="icon" type="image/svg" href="https://adj.news/logo.svg">
+    <link rel="apple-touch-icon" href="https://adj.news/logo.svg">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+
+    <!-- The script that loads Advanced Charts -->
+    <script type="text/javascript" src="charting_library_cloned_data/charting_library/charting_library.js">
+    </script>
+
+    <script>
+        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+        posthog.init('phc_s49LlRrPKqSVaHKwzWU0bykUQL9Bg9oV8jQLMM54NmK', {
+            api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
+        })
+    </script>
+
+    <!-- Custom datafeed module -->
+    <script type="module" src="src/main.js"></script>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 1px;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        .tv-chart-container {
+            width: 100%;
+            height: 95%;
+        }
+
+        header {
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- display the overall market -->
+    <div class="tv-chart-container" id="tv_chart_container_1"></div>
+    <div class="tv-chart-container" id="tv_chart_container_2"></div>
+    <div class="tv-chart-container" id="tv_chart_container_3"></div>
+    <div class="tv-chart-container" id="tv_chart_container_4"></div>
+    <div class="tv-chart-container" id="tv_chart_container_5"></div>
+    <div class="tv-chart-container" id="tv_chart_container_6"></div>
+    <div class="tv-chart-container" id="tv_chart_container_7"></div>
+    <div class="tv-chart-container" id="tv_chart_container_8"></div>
+    <div class="tv-chart-container" id="tv_chart_container_9"></div>
+</body>
+
+</html>
