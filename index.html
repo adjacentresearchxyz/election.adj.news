@@ -19,6 +19,13 @@
         })
     </script>
 
+    <script src="https://chattable.neocities.org/scripts/main.min.js"></script>
+    <script>
+        chattable.initialize({
+            theme: "Hacker Terminal",
+        });
+    </script>
+
     <!-- Custom datafeed module -->
     <script type="module" src="src/main.js"></script>
     <style>
@@ -29,6 +36,7 @@
             gap: 1px;
             height: 100vh;
             overflow: hidden;
+            position: relative; /* Added to make the iframe float on top */
         }
 
         @media (max-width: 768px) {
@@ -45,6 +53,27 @@
         header {
             grid-column: 1 / -1;
         }
+        #chattable {
+            position: absolute; /* Makes the iframe float on top */
+            bottom: 20px; /* Adjusts the position to the bottom */
+            right: 20px; /* Adjusts the position to the right */
+            z-index: 9999; /* Ensures the iframe is on top of other elements */
+            transition: transform 0.3s ease-in-out; /* Smooth transition for collapsing */
+            background-color: white; /* Sets the background color to solid white */
+            height: 250px; /* Increases the height of the iframe */
+        }
+
+        #chattable.collapsed {
+            transform: translateY(100%); /* Collapses the iframe */
+        }
+
+        #collapse-button {
+            position: absolute; /* Positions the button relative to its parent */
+            bottom: 20px; /* Aligns the button with the bottom of the iframe */
+            right: 20px; /* Aligns the button with the right of the iframe */
+            z-index: 10000; /* Ensures the button is on top of the iframe */
+            cursor: pointer; /* Changes cursor to pointer on hover */
+        }
     </style>
 </head>
 
@@ -59,6 +88,17 @@
     <div class="tv-chart-container" id="tv_chart_container_7"></div>
     <div class="tv-chart-container" id="tv_chart_container_8"></div>
     <div class="tv-chart-container" id="tv_chart_container_9"></div>
+    <iframe src='https://iframe.chat/embed/index.html?chat=28949808' id='chattable' frameborder='none'></iframe>
+    <button id="collapse-button" onclick="toggleCollapse()">Collapse</button>
 </body>
+
+<script>
+    function toggleCollapse() {
+        const chattable = document.getElementById('chattable');
+        chattable.classList.toggle('collapsed');
+        const collapseButton = document.getElementById('collapse-button');
+        collapseButton.textContent = chattable.classList.contains('collapsed') ? 'Expand' : 'Collapse';
+    }
+</script>
 
 </html>
