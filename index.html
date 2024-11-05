@@ -31,7 +31,7 @@
     <style>
         body {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr); /* 4 columns: 3 for charts, 1 for chat */
             grid-template-rows: repeat(3, 1fr);
             gap: 1px;
             height: 100vh;
@@ -42,25 +42,45 @@
         @media (max-width: 768px) {
             body {
                 grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: auto;
+                overflow: auto;
             }
         }
 
         .tv-chart-container {
-            width: 100%;
+            width: 95%;
             height: 95%;
         }
 
-        header {
-            grid-column: 1 / -1;
+        .charts-container {
+            grid-column: 1 / 4; /* Spans the first 3 columns */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 1px;
+            height: 100vh;
+            overflow: hidden;
         }
+
+        @media (max-width: 768px) {
+            .charts-container {
+                grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: repeat(9, 1fr);
+                overflow: auto;
+            }
+        }
+
         #chattable {
+            grid-column: 4 / -1; /* Spans the last column */
+            grid-row: 1 / -1; /* Spans all rows */
             position: absolute; /* Makes the iframe float on top */
-            bottom: 20px; /* Adjusts the position to the bottom */
-            right: 20px; /* Adjusts the position to the right */
+            bottom: 1em;
+            padding-top: 2em;
             z-index: 9999; /* Ensures the iframe is on top of other elements */
             transition: transform 0.3s ease-in-out; /* Smooth transition for collapsing */
             background-color: white; /* Sets the background color to solid white */
-            height: 250px; /* Increases the height of the iframe */
+            width: 100%; /* Adjusts the width to cover the entire column */
+            height: 100%;
         }
 
         #chattable.collapsed {
@@ -78,27 +98,19 @@
 </head>
 
 <body>
-    <!-- display the overall market -->
-    <div class="tv-chart-container" id="tv_chart_container_1"></div>
-    <div class="tv-chart-container" id="tv_chart_container_2"></div>
-    <div class="tv-chart-container" id="tv_chart_container_3"></div>
-    <div class="tv-chart-container" id="tv_chart_container_4"></div>
-    <div class="tv-chart-container" id="tv_chart_container_5"></div>
-    <div class="tv-chart-container" id="tv_chart_container_6"></div>
-    <div class="tv-chart-container" id="tv_chart_container_7"></div>
-    <div class="tv-chart-container" id="tv_chart_container_8"></div>
-    <div class="tv-chart-container" id="tv_chart_container_9"></div>
+    <div class="charts-container">
+        <!-- display the overall market -->
+        <div class="tv-chart-container" id="tv_chart_container_1"></div>
+        <div class="tv-chart-container" id="tv_chart_container_2"></div>
+        <div class="tv-chart-container" id="tv_chart_container_3"></div>
+        <div class="tv-chart-container" id="tv_chart_container_4"></div>
+        <div class="tv-chart-container" id="tv_chart_container_5"></div>
+        <div class="tv-chart-container" id="tv_chart_container_6"></div>
+        <div class="tv-chart-container" id="tv_chart_container_7"></div>
+        <div class="tv-chart-container" id="tv_chart_container_8"></div>
+        <div class="tv-chart-container" id="tv_chart_container_9"></div>
+    </div>
     <iframe src='https://iframe.chat/embed/index.html?chat=28949808' id='chattable' frameborder='none'></iframe>
-    <button id="collapse-button" onclick="toggleCollapse()">Collapse</button>
 </body>
-
-<script>
-    function toggleCollapse() {
-        const chattable = document.getElementById('chattable');
-        chattable.classList.toggle('collapsed');
-        const collapseButton = document.getElementById('collapse-button');
-        collapseButton.textContent = chattable.classList.contains('collapsed') ? 'Expand' : 'Collapse';
-    }
-</script>
 
 </html>
